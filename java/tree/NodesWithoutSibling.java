@@ -99,7 +99,7 @@ public class NodesWithoutSibling {
         return root;
     }
 
-    public static void main(String[] args) throws IOException {
+     static void main(String[] args) throws IOException {
         BinaryTreeNode<Integer> root = takeInput();
         printNodesWithoutSibling(root);
     }

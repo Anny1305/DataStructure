@@ -1,4 +1,4 @@
-package btree;
+package btree.main;
 
 public class BinaryTreeNode<T> {
   public T data;

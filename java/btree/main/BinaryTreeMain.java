@@ -1,10 +1,10 @@
-package btree;
+package btree.main;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class BinaryTreeUse {
+public class BinaryTreeMain {
 
   public static BinaryTreeNode<Integer> takeInputRecursive(Scanner sc){
     int rootData;
@@ -69,12 +69,11 @@ public class BinaryTreeUse {
         q.add(rightNode);
       }
     }
+    System.out.println("===================Tree Input Complete================");
     return root;
   }
 
-
-
-  public static void main(String[] args) {
+  static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 //    BinaryTreeNode<Integer> integerBinaryTree = takeInputRecursive(sc);
     BinaryTreeNode<Integer> integerBinaryTree = takeInputIteratively();
