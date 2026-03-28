@@ -1,6 +1,8 @@
 package btree.medium;
 import java.io.*;
 import java.util.*;
+import btree.main.BinaryTreeMain;
+import btree.main.BinaryTreeNode;
 
 /*
     Problem:
@@ -17,19 +19,6 @@ import java.util.*;
 */
 
 public class NodesWithoutSibling {
-
-    /*
-        Binary Tree Node Definition
-    */
-    static class BinaryTreeNode<T> {
-        T data;
-        BinaryTreeNode<T> left;
-        BinaryTreeNode<T> right;
-
-        BinaryTreeNode(T data) {
-            this.data = data;
-        }
-    }
 
     /*
         Core Logic:
@@ -50,57 +39,8 @@ public class NodesWithoutSibling {
         printNodesWithoutSibling(root.right);
     }
 
-    /*
-        Level Order Tree Input
-        -1 represents NULL
-    */
-    public static BinaryTreeNode<Integer> takeInput() throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] nodeData = br.readLine().trim().split(" ");
-
-        if (nodeData.length == 0 || nodeData[0].equals("-1"))
-            return null;
-
-        Queue<BinaryTreeNode<Integer>> queue = new LinkedList<>();
-
-        BinaryTreeNode<Integer> root =
-                new BinaryTreeNode<>(Integer.parseInt(nodeData[0]));
-
-        queue.add(root);
-
-        int i = 1;
-
-        while (!queue.isEmpty() && i < nodeData.length) {
-
-            BinaryTreeNode<Integer> current = queue.poll();
-
-            // Left child
-            if (!nodeData[i].equals("-1")) {
-                current.left = new BinaryTreeNode<>(
-                        Integer.parseInt(nodeData[i])
-                );
-                queue.add(current.left);
-            }
-            i++;
-
-            if (i >= nodeData.length) break;
-
-            // Right child
-            if (!nodeData[i].equals("-1")) {
-                current.right = new BinaryTreeNode<>(
-                        Integer.parseInt(nodeData[i])
-                );
-                queue.add(current.right);
-            }
-            i++;
-        }
-
-        return root;
-    }
-
-     static void main(String[] args) throws IOException {
-        BinaryTreeNode<Integer> root = takeInput();
+     static void main(String[] args){
+        BinaryTreeNode<Integer> root =  BinaryTreeMain.takeInputIteratively();
         printNodesWithoutSibling(root);
     }
 }
